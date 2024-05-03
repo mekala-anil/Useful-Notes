@@ -1,0 +1,31 @@
+Java 8
+
+Frameworks/Tools:
+
+Basic Spring fundamentals
+Spring Boot (Advanced)
+Hibernate
+Microservices
+Spring Security
+
+Database: SQL/MySQL
+
+Version Control: Git/GitHub
+
+Testing: JUnit, Mockito
+
+Build Tools: Maven
+
+Deployement and CI/CD: Jenkins
+
+Debug and Troubleshoot: IDE debugger(IntelliJ/Eclips), Log4J Framework
+
+Other Skills:
+Problem Solving(DSA)
+Deployement of Java Application
+Agile Methodologies
+Design Patterns
+HTTP Methods
+
+
+*Continuous Learning to new technologies

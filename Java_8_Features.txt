@@ -1,0 +1,53 @@
+Lamda Expression:
+----------------
+The Expression through which we can represent anonymous function
+
+Functional Interface:
+---------------------
+A interface which contain only one abstract method but can have multiple default and static methods is called functional interface
+then only we can declare a lamda expression for that one abstract method in functional interface
+
+Since Java 1.8, a normal interface also can have any number of abstract methods and any number of implemented methods using static and default
+
+
+forEach:
+--------
+java provides new method forEach() to provide iterate elements in iterables
+Collections whichever extends Iterable interface can use forEach() method to iterate elements
+
+e.g.  list.forEach(val->System.out.println(val));
+
+for, enhanced for loops are external loops and foreach is internal for loop as it is from Collections
+it will be faster than external loops to iterate collection elements
+
+
+Consumer Interface:
+------------------
+it is a functional interface, it accepts only one argument and performs operations on it and it will not return anything
+
+
+
+Stream API: Introduced in Java 8
+--------------------------------- 
+Stream API used to process collection of objects using various intermediate methods
+Streams don’t change the original data structure, they only provide the result as per the pipelined methods
+
+(a) Intermediate methods
+	map: returns stream by applying given function on stream elements
+	filter: returns stream of elements which passes given condition
+	sorted: Used to sort the stream
+(b) Terminal methods
+	collect: this method used to collect result of intermediate operations
+	forEach: used to iterate every element of stream
+	reduce:	used to reduce stream of elements to single value
+
+LocalDate and Time:
+--------------------
+
+New Date and Time API Introduced in java 8 over existing old date package
+
+advantages of new API
+a. Thread safety
+b. Designed API and ease of understanding
+c. ZonedDate and time
+	

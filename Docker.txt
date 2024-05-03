@@ -1,0 +1,249 @@
+											Docker
+											-------
+
+How does traditional Deployement Works (Without Docker)
+
+	1. Deployement process described in a docuement
+	2. Operations team follows steps to:
+		a. Setup hardware
+		b. Setup OS(Linux, Windows, Mac ..)
+		c. Install Software(Java, Python, NodeJS..)
+		d. Setup Application Dependencies
+		e. Install Application
+
+	3. Manual Process
+
+	- Takes lot of time
+	- High chances of making mistake
+
+
+
+Q. What is Docker?
+
+	- Docker is containerization platform
+	- Docker will take care application dependencies for execution
+	- Deployement into multiple environments will become easy if we use docker containers 
+
+
+
+										run
+						build           -------> container
+			Dockerfile ---------> image -------> container
+										-------> container
+
+
+	Dockerfile: it will contain set of instructions to build docker image
+	image : it is a package which will contain application code and dependencies
+		we can run this image in any machine
+		once we run the image a docker container will be created
+		inside the container, our application will be executed
+
+	docker container: It is a runtime instance of our application
+
+
+
+Deploying Spring Boot App in Docker:
+-------------------------------------
+
+	1. Create Spring Boot Application
+	2. Package Boot App using 'mvn clean package'
+	3. Write Dockerfile to build docker image
+	4. Create docker image using Dockerfile
+	5. Run Docker image (it will create container)
+	6. Access application in browser
+
+Sample Deployement Process
+--------------------------
+
+1. Make Sure MVN installed and set path in system and check version of it using 'mvn -version' and
+	docker also should be installed in system and check version 'docker --version'
+
+2. Optional : Change jar name in pom.xml, for simple jar name using <finalName> tag
+
+				<build>
+					<finalName>sb_docker_app</finalName>
+					<plugins>
+					</plugins>
+				</build>
+
+3. Build jar and it will be saved in target folder
+
+	a. open cmd in project directory then run
+		> mvn clean package
+		above cmd will build jar and will store in target folder
+
+4. Create 'Dockerfile' and write script in it
+
+	a. To create Dockerfile, right click on project folder then new file and name it as 'Dockerfile' without any extension
+
+	b. Dockerfile script
+
+		FROM openjdk:17
+		WORKDIR /app
+		COPY target/sb_docker_app.jar /app
+		ENTRYPOINT ["java","-jar","sb_docker_app.jar"]
+
+5. Build Docker image by running the Dockerfile script
+
+	a. Open cmd in project directory where Dockerfile available then run command
+
+		>docker build -t sbapp .
+
+		-t: tag name 
+		sbapp: image name
+		. : Indicates current directory
+
+	b. we can check docker image created or not by running cmd
+		>docker images
+
+6. Run the Docker image then a container will be created and it will executed
+
+	> docker run -d -p 8080:8080 sbapp
+
+	-d : (optional) Detachment mode
+
+	> docker ps -a
+	above cmd will list out current executing containers
+
+7. Check it by hitting a Demo endpoint for proper setup
+
+
+
+Understanding Deployement Process with Docker:
+-----------------------------------------------
+
+Simplified Deployement Process:
+	-OS Doesn't matter
+	-Programming language doesnt matter
+	-Hardware Doesnt matter
+
+
+1. Developer creates Docker image
+2. Operations run Docker image
+	-Using very simple command
+
+Takeway: Once you have a docker image, irrespective of what docker image contains,
+you run it same way
+
+
+Q. How Docker makes it easy?
+
+- Docker image has everything you need to run your application
+	a. Operating System
+	b. Application Runtime(JDK, Python ..)
+	c. Application code and dependencies
+
+- You can run Docker container the same way everywhere
+	a. Your local machine
+	b. Corporate data center
+	c. Cloud
+
+
+
+Docker Terminology:
+-------------------
+
+Docker Image: A package representing specific version of your application
+	-Contains everything your app needs
+
+Docker Registry: A place to store your docker image
+
+Docker Hub: A registry to host Docker images
+
+Docker Repository: Docker images for a specific app (tags used to differentiate images)
+
+Docker Container: Runtime instance of a Docker image
+
+Docker File: File with instructions to create a docker image
+
+
+
+
+Docker Commands:
+----------------
+
+1. Docker Basic Commands
+
+	docker info: Info about how many images and containers available
+	docker version: version of docker
+	docker login: To connect docker machine to hub
+	docker logout: To logout from docker hub account
+	docker help: To get syntax of docker commads help
+
+2. Docker Image Commands
+	
+	docker images: will give available docker images info
+	docker rmi<imagename>: to delete particular image from system
+	docker pull<imagename>: To pull image from docker hub
+	docker run<imagename>:To run docker image and it will create container, if not available locally then pulls from hub
+	docker run -d -p host-port:cont-port <imagename> : To run detached mode
+	docker run <imagename> <image-tag-name>: To run particular version/tag
+	docker push <imagename>: To push into docker registry
+	docker history<imagename>: History of image about when copied, pushed etc.
+	docker inspect<imagename>: To see low level information
+	docker prune: To delete all unused docker images
+
+3. Docker Container Commands
+
+	docker ps: To see running containers
+	docker ps -a: To see all stopped containers also
+	docker stop<container-id>: To stop particular container
+	docker start<container-id>: To run stopped container
+	docker restart<container-id>: To restart container
+	docker rm<container-id>: To remove stopped container
+	docker logs<container-id>: To see logs of particular container
+	docker exec -it<container-id> /bin/bash : To get cmd of current running container to perform any commnads
+	docker inspect<container-id>: To see low info about container
+	docker export container: To save container data into a tar file
+
+
+4. Docker Network Commands
+	
+	docker network ls: To list out available networks in docker
+	docker network create<network-name>: To create a network in docker
+	docker network rm<network-name>: To remove network from docker
+	docker network inspect<network-name>: To see low level info about network
+
+
+5. Docker Volumes Commands
+
+	docker volume ls: gives available volumes in docker
+	docker volume create <vol-name>: To create new volume
+	docker volume inspect<vol-name>: To see low level info of volume
+	docker volume rm<vol-name>: To remove volume
+	docker system prune --volumes: To remove unused volumes
+
+
+6. Docker Compose Commands : Used to run multi container based applications (Need to install additionally)
+
+	docker-compose --version: To know multi container application's compose container version
+	docker-compose up -d: To run compose container in detached mode
+	docker-compose down: To stop it and remove
+	docker-compose ps: To know containers created by compose
+	docker-compose images: what images used by docker compose
+	docker-compose stop: To stop containers
+	docker-compose start: To start stopped containers
+
+
+7. Docker Swarm Commands : Used to work with life cycle of containers
+	
+	docker swarm init
+	docker swarm join --token <worker-token> <manager-ip>:<manager-port>
+	docker swarm join-token manager
+	docker node ls
+	docker service create --name <service-name> <image-name>
+	docker service ls
+	docker service scale <service-name>=<replica-count>
+	docker service inspect <service-name>
+	docker service rm <service-name>
+
+
+
+
+
+Note: Need to build jar file while creating Docker image and script should be written in Dockerfile, Then local environment might not affect jar and it will be comfortable to run on any machine
+
+	Otherwise we may have chance to get errors while running in other systems if generate jar in our local system manually
+
+
+

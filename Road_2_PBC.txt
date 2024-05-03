@@ -1,0 +1,102 @@
+
+1. Learn Language
+
+2. Pattern Printing
+
+	It will help to master for loop and if else and logic building as well
+
+3. Time and Space Complexity
+
+4. Recursion
+
+5. Learn Data Structures
+
+	a. Array
+	b. Linked List
+	c. Queue
+	d. Stack
+	e. Binary Tree
+	f. Heap
+	g. Graph
+
+6. Algorithms
+
+	Sorting Algorithms:
+		-Bubble Sort
+		-Selection Sort
+		-Insertion Sort
+		-Merge Sort
+		-Quick Sort
+		-Heap Sort
+		-Radix Sort
+
+	Searching Algorithms
+		-Linear Search
+		-Binary Search
+		-Depth First Search(DFS)
+		-Breadth First Search(BFS)
+
+	Problem Solving Techniques
+		-Recursion and Backtracking
+		-Greedy Algorithms
+		-Two Pointer
+		-Sliding Window
+		-Hashing and Hash Tables
+		-Bit Manupilation
+		-Memorization
+
+	Dynamic Programming
+		-Fibanacci Sequence
+		-Knapsack Problem
+		-Longest Common Subsequence
+		-Coin Change Problem
+		-Matrix Chain Multiplication
+		-Edit Distance
+
+	Graph Algorithms
+		-DFS and BFS on Graphs
+		-Dijkstra's Algorithm
+		-Bellman-Ford Algorithm
+		-Flyod-Warshall Algorithm
+		-Topological Sorting
+
+	Advance Algorithms
+		-K way merge
+		-Trie
+		-Disjoint set Union(Union Find)
+		-Segment Trees
+		-Binary Indexed Trees(Fenwick Trees)
+		-Divide and Conquer Algorithms
+		-Randamoized Algorithms
+
+7. Dynamic Programming
+
+8. Projects (Uniqe Projects)
+
+9. Computer Fundamentals
+	
+	OOPS & Design
+	DBMS
+	Computer Architecture
+	Operating System
+	Computer Network
+
+10. Resume 
+
+11. Read Interview Experience daily
+	
+		Go through plenty of experiences of target company then you will understand patterns
+
+12. Revise DSA regular basis
+
+13. Apply For Jobs
+
+	-LinkedIn Jobs
+	-Referals through LinkedIn
+	-Naukri(Sometime works)
+	-Companies Job Portals
+	-Friends and Seniors referal
+
+14. Post Office Works, Spend Daily 2-3 hours
+
+15. System Design (LLD & HLD)

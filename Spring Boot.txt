@@ -1,0 +1,267 @@
+								Spring Boot
+								------------
+
+Before Spring Boot:
+------------------
+
+	Setting up projects before spring boot was not easy
+		1. Dependency Management(pom.xml)
+		2. Define Web App configurations(web.xml)
+		3. Manage Spring Beans(context.xml)
+		4. Implement Non Functional Requirements(NFRs)
+
+	Need to repeat this for every new project and lot of time consumed
+
+
+Goal of Spring Boot:
+--------------------
+
+Helps build PRODUCTION-READY applications QUICKLY
+	QUICKLY
+		1. Spring Initializer
+		2. Spring Boot Starter Projects
+		3. Spring Boot Auto Configuration
+		4. Embedded Tomcat Server
+		5. Spring Boot DevTools
+
+	PRODUCTION-READY
+		1. Logging
+		2. Different Configuration for Different Environments
+		3. Monitoring (Actuators)
+
+
+How Spring Boot simplify auto configuration:
+	Auto configuration for your app decided on
+		1. Which frameworks in class path
+		2. What is existing configuration (Annotation etc)
+
+	Example : Spring Boot Starter Web
+		1. Dispatcher Servlet (DispatcherServletAutoConfiguration)
+		2. Embedded Servlet Container - Tomcat is default
+			(EmeddedWebServerFactoryCustomizerAutoConfiguration)
+		3. Default Error Pages (ErrorMvcAutoConfiguration)
+		4. Bean <--> JSON (JacksonHttpMessageConvertersConfiguration)
+
+
+Spring Boot DevTools:
+	- Increases Developer Productivity
+	- No need to restart server for every code change, After saving code changes will reflect in server
+
+	Note: For Pom.xml dependency changes, we need to restart server Manually
+
+
+Profiles: Environment Specific configuration
+	Applications have different environments: Dev, QA, Staging, Prod
+
+	application.propertise ---- default 
+	application-dev.propertise --- Dev Environmant
+
+	we can activate by using : spring.activate.profile=dev
+
+	Now default and specific propertise merged and specific propertise given high priority
+
+	- We can also externalize boot propertise using @ConfigurationPropertise and @Component
+		in Java Code
+
+Deployement with Spring Boot:
+-----------------------------
+
+Old Way
+	1. Install Java
+	2. Install web/application server(tomcat/weblogic/websphere)
+	3. Deploy the application WAR (Web Archive)
+
+Embedded Server - Simpler Alternative
+	1. Install Java
+	2. Run JAR file
+
+	Make JAR not WAR
+
+
+
+Monitoring your application using Actuators:
+
+	- It will monitor and manage application in production
+	- Provides number of end points, some of them are
+		beans- Complete list of spring beans in your application
+		health- application health information
+		metrics- application metrics
+		mappings- details around request mappings
+
+	management.endpoints.web.exposure.include=* --> Exposuses all endpoints
+
+
+Spring vs Spring MVC vs Spring Boot:
+-----------------------------------
+
+Spring Framework : Dependency Injection
+	@Component, @Autowired, @CompoenetScan etc.
+	Just Dependency Injection not sufficient (you need other modules to build)
+
+Spring MVC (Spring Module): Simplifies building web apps and Rest APIs
+	@Controller, @RestController, @RequestMapping("/")
+
+Spring Boot (Spring Project): Build production ready apps quickly
+
+
+
+JDBC -> Spring JDBC -> JPA -> Spring Data JPA :
+
+	JDBC:
+		Write lot of sql queries
+		And write lot of java code
+
+	Spring JDBC:
+		Write lot of sql queries
+		But lesser Java Code (uses JdbcTemplate)
+
+	JPA:
+		No worry about queries
+		Map Entities into Tables (uses EntityManager)
+
+	Spring Data JPA
+		Lets make JPA even more simpler
+		I will take care of everything
+
+
+Hibernate vs JPA:
+
+JPA: JPA defines the specification, it is API
+	difines entities
+	map attributes
+	manages the entities
+
+Hibernate: Hibernate is one of the papulor implimentations of JPA
+
+-> Using Hibernate directly will lock in hibernate
+	There are other JPA implimentations (Toplink etc.)
+
+
+
+What happens in Background when we run sample Boot Application:
+---------------------------------------------------------------
+
+1. How are our requests handled ?
+
+	- Dispatcher Servlet - Front Controller Pattern
+	a. Mapping servlets: dispatcherServlet urls=[/]
+	b. Auto Configuration (DispatcherServletAutoConfiguration)
+
+2. How bean object converted to JSON ?
+
+	- @ResponseBody + JacksonHttpMessageConverters
+
+	a. Auto Configuration (JacksonHttpMessageConvertersConfiguration)
+
+3. Who is configuring error mapping ?
+	
+	Auto Configuration (ErrorMvcAutoConfiguration)
+
+4. How all jars available (spring, spring mvc, jackson, Tomcat)
+
+	- Starter Projects will make avilable all jars
+
+	e.g. Spring Boot Starter Web (spring-webmvc, spring-web, tomcat etc.)
+
+
+
+
+HTTP methods for REST APIs:
+-------------------------
+
+GET : To retrive resources
+POST : To create resources
+PUT : To update existing resources
+PATCH : To Update part of existing resources
+DELETE : To Delete resources
+
+
+Exception Handling:
+-------------------
+
+In spring Boot @ControllerAdvice and @ExceptionHandler used for global exception handling
+
+	A class which annotated by @ControllerAdvice becomes centralized to handle all exceptions throwed
+	by accross the controllers
+
+	@ExceptionHanlder this is used in @ControllerAdvice class which is used to handled specific exceptions
+	thrown by controllers
+
+	we can have multiple @ExceptionHandler methods in a class which will hadle specific exception or only one for generic
+
+
+
+
+Cascading Behavior:
+-------------------
+
+	When we try to delete or update a record in a table that has foreign contrain or depended on another table record then
+	it will throw a SQLIntegrity Exception
+
+	We need to delete assocition first then after delete parent
+
+	We can manually handle it by Identifying child table dependencies and we can delete them first then parent
+
+	We can define custom Repositary and can delete them
+
+
+	Exception Handling in Spring Boot:
+	-----------------------------------
+
+	APIs must handle exceptions properly to give proper response back to Client
+
+	@ControllerAdvice
+	@ExceptionHandler
+
+
+
+Unit Testing
+-------------
+
+Testing a Application behavior againist expected behavior
+
+We have 2 ways to test App
+
+Option 1: Deploy Complete Application and test
+	It is called System testing or Integration Testing
+
+Option 2: Test specific unit of code Independently, i.e specific method or group
+	It is called Unit testing
+
+Advantages of Unit Testing:
+
+	1.Finds Bugs early (under Continious Integration)
+	2. Easy to fix bugs
+	3. Reduces costs in long run
+
+Most Papulor Java Frameworks: JUnit and Mockito
+
+
+JUnit:
+------
+	JUnit is java framework for unit testing, which will run tests for behavior of units such as as methods
+
+	We have some Assert Methods for Testing
+
+	1. assertEquals(expected, actual) -> checks wheather two objects true or not
+	2. assertTrue(condition)-> Checks condition to be true
+	3. assertFalse(condition) -> Checks result to be false
+	4. assertNull(object) -> checks object to be null
+	5. assertNotNull(object)-> asserts objects should not be null
+	6. assertArrayEquals(expectedArray, actualArray)-> Checks arrays should be equals
+
+	etc.
+
+	We Some Annotations
+	-------------------
+
+	@Test : Used to mark method as test case
+
+	@BeforeEach: marks method to run before each test case
+	@AfterEach: runs after every test case
+
+	@BeforeAll: marks method to run before any test begins
+	@AfterAll: marks method to run after all tests completed
+
+
+	- These annotations helps to set any resourses before test or we can clean up after tests

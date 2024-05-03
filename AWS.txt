@@ -1,0 +1,317 @@
+										Amazon Web Services (AWS)
+										-------------------------
+
+
+AWS : It is leading Clou service Provider and provides (200+) services
+
+
+
+Note: It is Recommanded to create IAM User, and provide privilages for day to day activities then we can avoid
+	using ROOT user credentials for security enhancement
+
+
+Regions and Zones:
+------------------
+
+Region: Region is a geographical area that consists of multiple data centers, which are physically seperated from each other
+		Each region is completely indipendent of other region
+		It offers AWS customers to 
+		High Availability
+		Fault tolerance
+		Low Latency to services
+
+
+Zones: Within each region, further divides into 'Availability Zones' (AZs), An availability zone typically consists of one or
+		more data centers each with redundant power, networking and connectivity
+
+		These availability zones are engineered to be isolated from failures in other availability zones within the same region while being interconnected through high-speed, low-latency links.
+
+Advantages of AWS Regions and Availability Zones:
+	
+	1. High Availability
+	2. Fault tolerance
+	3. Low Latency
+	4. Complience and Data Residency
+	5. Disaster Recovery
+	6. Scalability and Flexibility
+
+
+
+
+EC2 (Elastic Cloud Compute):
+-----------------------------
+
+EC2 is a web service provided by AWS, that allow users to rent virtual servers known as instance, on which they can run their
+	own applications
+
+EC2 Instance refers to a virtual server that runs within AWS Clod infrastructure 
+	Each E2 Instance is essentially a Virtual Machine that can be customized to meet requirements of application such as CPU, Memory and networking configuration etc.
+
+
+
+Infrastructure as a Service(IAAS):
+-----------------------------------
+
+1. In IAAS, AWS provides fundamental computing infrastructure as a service such as virtual machines(EC2 instances)
+	networking, storage and other resources over internet
+
+2. Users have full control over infrastructure such as OS, Application Runtime and Application
+
+3. IAAS is suitable for users who want more control over managing virtual servers, storage and networking configurations
+
+4. Ex: Amazon EC2, Amazon S3(for storage), Amazon VPC(for networking) etc.
+
+
+Platform as a Service:
+----------------------
+
+1. In PAAS, AWS provides a platform that allow developers to build, deploy, manage applications without worrying about 
+	underlying infrastructure
+
+2. PAAS abstracts complexity of managing servers, operating systems, infra etc. then allowing developers to solely focus on 
+	coding and deployement of applications
+
+3. Ideal for developers who want to accelarate development of applications and deploy without managing infra
+
+4. Example of PAAS services in AWS are AWS Elastic Beanstalk, AWS Lamda, Amazon RDS(Relational Database service) etc.
+
+
+
+- Role creation, while deploying boot app in Elastic Beanstalk
+
+When creating the IAM role, attach policies that provide the necessary permissions. AWS provides managed policies like AWSElasticBeanstalkWebTier, AWSElasticBeanstalkWorkerTier, and AmazonEC2FullAccess, which you can attach based on your requirements
+
+
+* These 3 Permissions are mandatory
+
+AWSElasticBeanstalkWebTier
+AWSElasticBeanstalkWorkerTier
+AWSElasticBeanstalkMulticontainerDocker
+
+
+
+- Java Developer Must Know these AWS services
+
+1. EC2 : (Elastic Cloud Computing) It is a Virtual Machine or Server
+
+2. Amazon S3
+
+3. Amzanon RDS (Relational Database Service)
+
+4. Elastic Beanstalk
+
+5. Route 53
+
+
+Udemy Course: Deploy Spring Boot Apps online AWS
+-------------------------------------------------
+
+Q. What is AWS (Amazon Web Services)
+
+	At high level, you can think of AWS as
+
+		- Online hosting services
+		- Deploy web applications
+		- Deploy databases
+
+	Once Deploed, your apps available online
+
+
+
+Key AWS Services are
+
+	EC2(Elastic Cloud Compute) : Remote VM
+	Elastic Beanstalk : Deploy Web applications
+	RDS(Relational Database Services) : Database in cloud
+	Route 53 : Route custom domain names
+
+
+
+Use Cases of Elastic Beanstalk and EC2:
+----------------------------------------
+
+For your apps, start with Elastic Beanstalk
+
+	Quickly get start with deploying applications
+	Leverage pre configured web stacks
+
+Use EC2, if you need low level control
+
+	If you want java version that not supported by Elastic Beanstalk
+	if you want different webserver (WebLogic, WebSphere etc.)
+	Any OS Specific Customizations
+
+
+
+Server Port : 5000
+
+AWS Elastic Beanstlak expects our spring boot application listining on 5000 port
+
+	Two options to port
+
+	1. Set Environment variables in Elastic Beanstalk
+		SERVER_PORT=5000
+
+	2. Set in application.propertise
+
+
+
+
+Deploy Database:
+-------------------
+
+Before Spring Boot, Quickly Deploy Database into RDS
+	We can manage it using
+	MySQL Workbeanch
+	Oracle SQL Developer etc.
+
+	AWS also has support for NoSQL Databases
+	MongoDB etc
+
+
+
+Add Environment variables at Runtime in IntelliJ for activating prod profile
+
+SPRING_PROFILES_ACTIVE=prod
+
+
+Setps I followed to Deploy Database and Spring Boot in AWS:
+------------------------------------------------------------
+
+1. Create RDS Instance in AWS then 
+	note down
+	endpoint (url)
+	username
+	password
+
+	while creating enable public access
+
+2. Edit Inbound security to allow all requests to connect
+
+3. Then connect it with MySQL Workbench using credentials and test it
+
+4. In Spring boot, create a different profile eg. prod or qa and add database credentials
+
+5. Then build a JAR using mvn clean package
+
+6. Now Create Elastic Beanstalk application
+
+	Add Environment Variables while creating
+
+	SERVER_PORT=5000		-> Listens at port 5000 in AWS
+	SPRING_PROFILES_ACTIVE=prod  -> it will active prod profile
+
+7. And Then Launch the application
+
+8. Note down aws url and test it
+
+
+
+Environment Propertise:
+-----------------------
+
+Spring boot can read appropriate environment propertise
+
+
+application.propertise							Environment Property
+
+spring.datasource.url 							SPRING_DATASOURCE_URL
+spring.datasource.username						SPRING_DATASOURCE_USERNAME
+spring.datasource.password						SPRING_DATASOURCE_PASSWORD
+
+
+To convert prop names then make all caps and replace "." with "_"
+
+
+
+Higher Priority:
+----------------
+
+If we provide propertise twice, which are in specifc profile and In Environment variables as well
+
+Then High priority given to Environment variables and it will overide
+
+
+AWS Systems Manager Parameter Store:
+-----------------------------------
+
+In short, parameter store
+
+While Sending Environment Varibles in AWS we are storing as plain text of db url and username, password
+inorder to protect we have parameter to store
+It will encrypt credentials while storing
+
+We have two options to Encrypt
+1. AWS Parameter Store (free tier)
+2. AWS Secret Manager (paid service)
+
+Process of Developement Using Parameter Store:
+---------------------------------------------
+
+1.	Create Parameters in AWS Parameter Store
+	we need to define path and parameters
+
+	e.g.
+		/config/products-crud/spring.datasource.url
+		/config/products-crud/spring.datasource.username
+		/config/products-crud/spring.datasource.password
+
+
+		Choose SecureString in stored type
+
+		And provide Paramers values in domain values
+
+2.	Attach Policy to AWS Existing Role
+
+	'AmazonSSMReadOnlyAccess'
+
+	Allows app to read configurations from parameter store
+
+3. Edit applications-prod.propertise file in Local Spring Boot App
+
+	spring.config.import=aws-parameterstore:/config/products-crud
+
+	It will load spring datasource from AWS Parameter Store
+
+4. Update pom.xml to support parametor store
+
+	Add two Dependencies
+
+	Bring these from 'awspring.io' site
+
+	a. Add above regular dependencies
+
+		<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.awspring.cloud</groupId>
+				<artifactId>spring-cloud-aws-dependencies</artifactId>
+				<version>3.1.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+		</dependencyManagement>
+
+
+	b. Add in regular dependencies
+
+		<dependency>
+			<groupId>io.awspring.cloud</groupId>
+			<artifactId>spring-cloud-aws-starter-parameter-store</artifactId>
+		</dependency>
+
+5. Package Spring Boot App using 'mvn clean package'
+
+6. update regular Environment variables in aws app configuration
+
+	SPRING_PROFILES_ACTIVE=prod
+
+
+
+Custom Domain name:
+------------------
+
+	We can generate custom domain name using 'Amazon Route 53' Service
+
+	It is paid service by AWS

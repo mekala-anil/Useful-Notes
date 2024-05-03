@@ -1,0 +1,55 @@
+								JWT Authentication
+								------------------
+
+
+	JWT Authentication is open, industry standard for representing claims securely between two parties
+
+	- It will contain User Details and Autherizations
+
+
+	JWT Token contains
+
+
+	1. Header
+		- Type:JWT
+		- Hashing Algorithm:HS512
+
+	2. Payload
+		-Standard Attributes
+			iss:The issuer
+			sub:The subject
+			aud:The audience
+			exp: when does token expires
+			iat: when was token issued
+		-Custom Attributes
+			youratt1:your attribute
+
+	3. Signature
+		-Includes Secret
+
+
+- Symmetric Algorithms use same key for encryption and decryption
+
+- Asymmetric Algorithms use public key for encryption and private key for decryption
+
+
+Understanding JWT Flow:
+-----------------------
+
+1. Create a JWT
+	-Needs Encoding
+		a.User credentials
+		b.User data(Payload)
+		c.RSA key pair
+
+2. Send JWT as part of request header
+	- Autherization Header
+	- Bearer Token
+	- Autherization:Bearer ${JWT_Token}
+
+3. JWT Verified
+	- Needs Decoding
+	- RSA Key pair(public key)
+
+
+

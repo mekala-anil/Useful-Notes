@@ -1,0 +1,283 @@
+								Spring Security
+								---------------
+
+
+Spring Security: Protects web applications, REST APIs and Microservices
+
+	it provides a very flexible security systems
+
+	- By default, everything is protected
+	- A chain of filters ensures proper authentication and autherization
+
+
+	How MVC Works:
+	Request --> DispatcherServlet --> Controllers
+
+
+	How Spring Security Works:
+	Request --> Spring Security --> DispatcherServlet --> Controllers
+
+
+	- Spring Security Intercepts all requests
+
+
+How does Spring Security Works:
+-------------------------------
+
+Spring Security Executes series of filters
+
+	Filters provide these features:
+
+		- Authentication: is it right user? (ex: BasicAuthenticationFilter)
+		- Authorization: does user have right access? (ex: AuthorizationFilter)
+		- Other features
+			a. Cross-Origin Resource Sharing (CORS) -CorsFilter
+				should you allow AJAX calls from other domain?
+
+			b. Cross Site Request Forgery (CSRF) -CsrfFilter
+				malicious website making use of previous authentication on your website
+				Default: CSRF protection enabled for update requests - POST, PUT etc
+
+			c. Login, Logout Page
+				LogoutFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter
+
+			d. Translating exceptions into proper Http Responses (ExceptionTranslationFilter)
+
+
+	Order of filters is Important (given below)
+
+	1. Basic Check Filters - CORS, CSRF, ..
+	2. Authentication Filters
+	3. Authorization Filters
+
+
+
+
+Default Spring Security Configuration:
+--------------------------------------
+
+Whenever we create spring boot project with spring security, basic default configuration enabled
+
+	- Everything Authenticated
+		you can customize later
+
+	- Form Authentication enabled (default form and logout features)
+
+	- Basic Authentication Enabled
+
+	- Test user created
+		Credentials printed in log (Username is User)
+
+	- CSRF Protection is enabled
+
+	- CORS requests are denied
+
+	- X-Frame options set to 0 (Frames are disabled)
+
+	- And lot more ..
+
+
+
+Form Based Authentication:
+---------------------------
+
+	- Used by most web applications
+
+	- Spring security enables form based authentication by default
+
+	- Uses a Session Cookie
+		JESSIONID:1a25ab12-054c-4be4-a689-87976d4d3ce8
+
+	- Provides default Login Page
+
+	- Provides default Logout Page
+
+	- Provides a /logout URL
+
+
+Basic Authentication:
+---------------------
+
+	- Most basic option for securing REST APIs
+		a. But has many flaws
+		b. Not recommanded for production use
+
+	- Base 64 encoded username and password is sent as request Header
+		a. Autherization : Basic aW4fkjgikhthalthaUVj
+		b. (Disadvantage) Easy Encoding
+
+	- Basic Auth Autherization Header
+
+		a. Does not contain autherization information (user access, roles, etc..)
+		b. Does not have expiry Date
+
+
+
+Cross Site Request Forgery(CSRF):
+
+	Protects from malicious web requests when you dont do logout
+
+	- To make an Update (POST, PUT, ..) request, you need a Csrf Token from previous request
+	- CSRF is coupled with sessions
+	- If you are using stateless APIs then you can disable csrf as well
+
+
+	We can disbale CSRF in 'SpringBottWebSecurityConfiguration.class', we can find it in jars
+		http.csrf().disabled()
+
+
+Cross Origin Resource Sharing (CORS):
+-------------------------------------
+
+	- Browsers do not allow AJAX calls to resources outside current origin
+	- CORS Specification that allows you toconfigure which cross-domain requests are allowed
+
+	Global Configuration
+		- Configure addCorsMappings callback method in WebMvcConfigurer
+	Local Configuration
+		- @CrossOrigin -Allow from all origin
+		- @CrossOrigin(origins="https://www.anilmekala.com") - Allows from specific origin
+
+
+Stroring User Credentials:
+--------------------------
+
+User details can be stored in
+	-In Memory : For test purposes, Not recommanded for production
+	-Databases: You can use JDBC/JPA for accessing credentials
+	-LDAP (LightWeight Directory Access Protocal) : 
+		Open Protocal for directory services and authentication
+
+
+
+Encoding Vs Hashing Vs Encryption:
+-----------------------------------
+
+Encoding: Transform data one form to another form
+	- Do not use key or password
+	- Is reversible
+	- Typically not used for securing data
+	- Usecases: Compression, Streaming
+	- Example: Base 64, WAV, mp3
+
+Hashing: Convert data into a Hash (String)
+	- One way Process
+	- Not reversable
+	- Usecases: Validate Integrity of data
+	- Example: bcrypt, scrypt
+
+Encryption: Encodind data using key or password
+	- you need key or password to decrypt data
+	- Example: RSA
+
+
+Spring Security-Storing Passwords:
+----------------------------------
+
+- Hashes like SHA-256 are no longer secure
+- Modern systems can perform billions of hash calculations in a second
+- Recommanded: Adaptive one way functions with work factor of 1 second
+	It should take 1 second to verify your password in system
+	ex: bcrypt, scrypt, argon2...
+- PasswordEncoder: Interface for performing one way transformation of a password
+	BCryptPasswordEncoder
+
+
+
+
+Understanding Spring Security Authentication Process:
+----------------------------------------------------
+
+Authentication will be done in a chain process
+
+	1. AuthenticationManager : Responsible for authentication
+		-Can interact with multiple authentication providers
+
+	2. AuthenticationProvider : Perform specific authentication type
+		- JwtAuthenticationProvider : JWT Authentication
+
+	3. UserDetailsService : Core interface to load user data
+
+	How authentication result stored?
+
+	SecurityContextHolder > SecurityContext > Authentication > GrantedAuthority
+
+		Authentication- (After Authentication) holds user (principal) details
+		GrantedAuthority- An authority granted to principal
+
+
+
+Exploring Spring Security Autherization:
+----------------------------------------
+
+1. Global Security: autherizeHttpRequests
+	- .requestMatchers("/users").hasRoles("USER")
+			a. hasRole, hasAuthority, hasAnyAuthority, isAuthenticated
+
+2. Method level Security (@EnableMethodSecurity)
+	- @Pre and Post Annotations
+		a. @PreAuthorize("hasRole('USER') and #username==authentication.name")
+		b. @PostAuthorize("returnObject=='anilmekala'")
+
+
+	- JSR 250 Annotations
+		a. @EnableMethodSecurity(jsr250Encoded=true)
+		b. @RolesAllowed({"ADMIN", "USER"})
+
+	- Secure Annotation
+		a. @EnableMethodSecurity(securedEnabled=true)
+		b. @Secured({"ADMIN", "USER"})
+
+
+
+Facts about Web World:
+----------------------
+
+
+Q. What are stateless and stateful applications?
+
+	Stateless Applications:
+
+		1. In Stateless Applications, each request from client to server treated as independent request and it
+		will not relay on previous requests
+
+		2. Server does not store any session data or context about client between requests
+
+		3. Each request must contain all the necessary information for the server to fulfill it
+
+
+	Stateful Applications:
+
+		1. In Stateful Applications, server maintains session data or context about client interactions with server
+		across multiple requests
+
+		2. Server stores session data such as authentication information or shopping cart contetents and associates it with a specific client requests
+
+		3. Stateful architectures can be more complex to scale because servers need to maintain session state
+
+
+
+Q. What are Session, Cookie and Tokens?
+
+	Session:
+
+		1. A session is typically created on the server, and a unique session ID is generated and stored as a cookie on the client-side.
+
+		2. Subsequent requests from the same client include the session ID, allowing the server to retrieve the associated session data and maintain stateful interactions with the user.
+
+		3. Sessions are often stored on the server-side, either in memory, databases, or other storage mechanisms.
+
+	Cookie:
+
+		1. A cookie is a small piece of data sent from a website and stored on the user's device by the user's web browser
+
+		2. Cookies are commonly used for session management, tracking user behavior
+
+	Tokens:
+
+		1. Tokens are strings of characters used for authentication and authorization in web applications.
+
+		2. Tokens are typically generated by the server upon successful authentication and are then sent to the client
+
+		3. The client includes the token in subsequent requests, allowing the server to identify and authenticate the user without needing to store session data on the server
+

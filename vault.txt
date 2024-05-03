@@ -1,0 +1,15 @@
+
+AWS
+
+Root User
+anil.mekala1768@gmail.com
+Anil@1768
+
+IAM: anil_dev
+anildev@1768
+
+
+
+MySQL
+root
+password

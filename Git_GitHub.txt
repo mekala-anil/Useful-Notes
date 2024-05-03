@@ -1,0 +1,203 @@
+
+Q. What is Git
+
+	Git is a Verson Control Tool, which is used to track changes in code
+
+	and it allows to collabarate with teams
+
+Q. What is GitHub
+
+	GitHub is a website where developers can store and manage their code using Git
+
+	https://github.com
+
+	We will store in Repositories
+
+
+
+Initial commit : first change
+
+commit: final change
+
+commits will be saved in the form of history
+
+README.md : Markdown file which will help to describe about project or repo
+
+
+ls: will list out available directories
+pwd: will show current working directory
+
+
+Configuring Git:
+---------------
+
+We can configure git globally and locally but recommanded to go globally
+
+To configure globally
+
+git config --global user.name "mekala-anil"
+
+git config --global user.email "anil.mekala1768@gmail.com"
+
+git config --list : It will show configured credentials
+
+
+Clone and Status:
+-----------------
+
+Clone : Cloning a repository on your local machine from remote github repo
+
+	git clone <somelink>
+
+status: displays state of code with respect to github repo
+
+	git status
+
+we have 4 types in status
+
+	1. untracked : new files that git not yet tracked
+
+	2. modified : changed file
+
+	3. staged : file is ready to be commited (add)
+
+	4. unmodified : no changes
+
+
+
+Add & Commit:
+-------------
+
+	add : adds new or changed files in your working directory to git staging area
+
+		git add <filename> : adds specific file to git statging area
+
+		git add . : adds all changed files to git staging area
+
+
+		all files in staging area are ready to be commited
+
+	commit : it is the record of change
+
+		git commit -m "any commit message"
+
+		it will commit changes to remote repo but it will not show changes in remote repo untill we do git push
+
+
+push : uploads local repo to remote repo
+
+	git push origin main
+
+
+	origin : from where we cloned
+	main : directly to main branch
+
+	after this code changes will be visibile in remote repo
+
+
+Init Command:
+------------
+
+	git init : It will initialize local folder as git repo
+
+	git remote add origin <somelink> : It will connect new local repo with remote repo
+
+	git remote -v : To verify remote
+
+	git branch : checks which branch we are in
+
+	git branch -M main : To rename branch
+
+	git push origin main : It will push code to remote repo
+
+	git push -u origin main : It will set upstream, no need to use origin main again and again and next time
+								we can use short form 'git push' to push under same repo
+
+
+Branch Commands:
+---------------
+
+	git branch : To check in which branch we are
+
+	git branch -M main : To rename branch to main
+
+	git checkout <branchname> : to change to any branch (navigate)
+
+	git checkout -b <new branch name> : it will create new branch
+
+	git checkout -d <branch name> : It will delete the branch
+
+
+Merging Code:
+-------------
+
+	option 1
+
+	git diff <branch name> : It will compare current branch with given branch
+
+	git merge <branch name> : it will merge two branches
+
+
+	option 2
+
+	Create a PR (Pull Request)
+
+
+Pull Request:
+
+	It tells others about changes you have pushed to a branch in a repository in github
+
+
+Pull Command: used to fetch and download content from a remote repo and immediately update local repo
+				to match content
+
+	git pull origin main
+
+
+Merge Conflicts:
+---------------
+
+	An event that takes place when git is unable to automatically resolve differences in code between two commits
+
+	We Need to choose manually which change we want
+
+
+Undoing Changes:
+----------------
+
+	case 1: staged changes (not commited yet)
+
+		git reset <filename>
+
+		git reset
+
+
+	case 2: Commited changes (for one commit)
+
+		git reset HEAD~1 : it set back to staging, just before commit
+
+	case 3: Commited changes (for many commits)
+
+		git reset <commit hash>
+
+		git reset --hard <commit hash> : It will reflect in VS Code as well
+
+
+
+git logs : Will show all logs og git
+
+
+Fork:
+-----
+
+	Fork is Copy of original repository that allows you to do any changes in code and that
+	will not effect original repo
+
+
+
+
+git remote remove origin : To disconnect local repo from romte repo
+
+git push -all : To push all at a time
+
+

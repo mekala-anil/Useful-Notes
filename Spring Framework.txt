@@ -1,0 +1,275 @@
+Crisp Notes of Spring and Spring Boot
+------------------------------------
+	
+	Top frameworks in Java world
+
+	 Spring Framework
+	 Spring Boot
+
+	-> Spring Boot built on top of Spring Framework for rapid development of web applications
+
+	Note: Spring Boot 3+ only works with Java 17+
+
+
+	We can build variety of Applications using Java, Spring, Spring Boot
+
+	1. Web Apps
+	2. Rest APIs
+	3. Full Stack
+	4. Microservices
+
+	Recommandation: Understand all Spring Framework features then step into Spring Boot
+
+
+								Spring Framework
+								-----------------
+
+Spring Configuration Types:
+--------------------------
+
+	We have several types of configurations and some of them are
+
+	1. XML Based Confuguration: Old and Traditional Way of Spring Configuration
+	2. Annotation Based Configuration: We use annotations like @Component and @Autowired etc.
+	3. Java Based Configuration: Introduced in Spring 3.0, Here Beans defined in Java Class which annotated by @Configuration
+
+	Note: It is possible to use all type of configurations in one Spring Application, we can use some part of applications as xml and some as annotation based or java based
+
+
+How Spring Framework Achieves Loose Coupling:
+---------------------------------------------
+
+	In traditional Java, Objects are created and handled by JVM itself but
+	In Spring, It creates a Spring Container then spring container will be responsible for creating and injecting objects
+
+	We can create Spring Container in Java Code using 'AnnotationConfigApplicationContext' class 
+	We need to instanciate this class and need to provide configuration class as a constructer parameter
+
+	using 'AnnotationConfigApplicationContext' reference we can get all container managed beans
+
+	e.g. AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyAppConfig.class);
+		MyService myService = context.getBean(MyService.class);
+		myService.doSomething();
+
+	Bean -> Object/Method created by Spring Container
+
+
+
+Spring Container : Manages Spring beans and their life cycle
+
+	We have mainly two types of container
+
+	1. Bean factory : Basic spring Container
+	2. Application Context : Advanced spring container with enterprise features
+
+	Recommanded to use Application Context, most enterprise applications use Application context
+
+
+POJO vs JavaBean vs Spring Bean :
+-------------------------------
+
+Java Bean : Java class it should follow 3 conditions
+	1. Public defualt contructor (no args)
+	2. we should have getters and setters
+	3. It should implement Serializable
+
+POJO: Any plain java object
+	No contrians at all
+
+Spring Bean : Any Java object which managed by Spring IOC container
+
+
+-> To list out all beans managed by Spring IOC Container is using container reference
+
+	String names[]= context.getBeanDefinitionNames();
+
+	it will return array of bean names
+
+-> If multiple beans matching in IOC Container then we can solve using
+	@Primary - It will mark one bean as Primary and if multiple matches then primary bean will be injected
+	@Qualifier("qualifier_name") - We should give qualifier name to bean while auto wiring as well
+
+	Qualifier has high priority over Primary
+
+-> Bean will be created with same name as class but it will have lower case of first letter of its name
+
+
+Dependency Injection : Identifies beans, their dependencies and wire them together
+Auto wiring : The process of wiring beans and its dependencies in spring framework
+
+
+Dependency Injection Types:
+---------------------------
+
+Constructor-based: Dependencies are set by creating the bean using constructor
+	Note: For Constructor it will inject even without using @Autowired annotation as well
+
+Setter-based: Dependencies are set by calling setter methods on your beans
+
+Field: No Setter or constructor, Dependency injected using reflection
+
+Recommanded:
+	Spring team recommands to go for Constructor based Injection, Dependencies are automatically
+	set when an object is created, even it will work without @Autowired annotation as well
+
+@Component : An Instance of a class managed by Spring Framework
+@ComponentScan : It will scan all package and its sub packages for Component classes
+	we can also explicitly privide package name for scan as well
+
+@Component vs @Bean:
+	Component used to any class but Bean annotation typically used for methods to create it as bean
+	in spring framework
+
+
+Lazy Initialization of Beans :
+----------------------------
+
+-> By default, Initialization of beans are 'Eager'
+-> However you can Initialize beans Lazyly using @Lazy Annotation
+	It will be initialized when someone using the bean
+	It can be used everywhere almost where we use @Component and @Bean
+	Can also used with @Configuaration class as well, all beans initiated lazily
+	In Lazy resulution, a proxy will be injected instead of Actual Dependency
+	Recommanded to use for very rarely used beans to prevent memory consuption
+	Note: Erros will not discovered at startup and these will become runtime exceptions
+
+-> Recommanded to go for Eager Initialization, because errors in configuration discovered immedialty
+
+
+Spring Bean Scopes:
+------------------
+Mainly we have two type of scopes in Spring
+
+	1. Singleton: One object instance per Spring IOC container
+	2. Prototype: Possibly many object instances for Spring IOC container
+
+	By default, Spring willl use singleton but if we wanted to go for Prototype we should use @Scope annotation
+
+	e.g. @Scope("prototype") or 
+		@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+	Each time a new instance of bean created whenever Spring requested for a bean
+
+	Prototype used for stateful beans, singleton used for stateless beans
+	stateful: If we have multiple user data mainaning at a time
+	stateless: when single user data at a time
+
+
+Java Singleton : One Instance per JVM
+Spring Singleton: One instance per Spring IOC Container
+
+
+PostConstruct and PreDestroy:
+-----------------------------
+These are method level annotations provided by Jakarta
+	PostConstruct: @PostConstruct marked method will be executed when all dependencies are auto wired
+	PreDestroy: @PreDestroy marked method will be executed just before bean removing from container, mostly used to
+		close any kind of resources like DB etc.
+
+Evulotion of Jakarta EE:
+-----------------
+
+J2EE(1.2, 1.3, 1.4) - Java 2 Platform Enterprise Edition
+Java EE(5 to 8) - Java Platform Enterprise Edition (Rebranding)
+Jakarta EE - Oracle gave Java EE rights to Eclipse Foundation
+	Important Specifications:
+	- Jakarta Server Pages(JSp)
+	- Jakarta Standard Tag Library(JSTL)
+	- Jakarta Enterprise Beans(EJB)
+	- Jakarta RESTful web services (JAX-RS)
+	- Jakarta Bean validation
+	- Jakarta Context and Dependency Injection (CDI) (which are alternative to Spring Annotations)
+		CDI is an Interface which is implemented by Spring Framework
+	- Jakarta Peristance (JPA)
+
+-> Jakarta supported by Spring 6 and Spring Boot 3+
+-> Spring 5 uses Java EE
+
+
+XML Configuration:
+------------------
+
+	To create Spring Container, we need to provide xml configuration file as parameter
+
+	ClassPathXmlApplicationContext context=new ClassPathXmlApplicationContext("contextConfiguration.xml");
+
+	This xml file should be in 'src/main/resources'
+
+
+Spring Stereo Type Annotations:
+------------------------------
+
+	@Component : Generic Annotation can be used by any class which should managed by Spring
+		Specelization of @Component
+			@Service : Indicate that class has bussiness logic
+			@Controller: Indicates class is a web controller
+			@Repositary: Indicates class will manupulate data in database
+
+Important Spring Annotations:
+----------------------------
+
+	@Configuration: Indicates that class will declare @Bean methods should processed by Spring
+	@ComponentScan: Scan for components in packages
+	@Bean: Indicates methods produces bean
+	@Component: Indicates class is a Spring Component
+	@Service: Specialization of @Component, Indicates it has bussiness logic
+	@Controller: Specialization of @Component, Indicates as web controller
+	@Repositary: Specialization of @Component, Indicates it deals with data in database
+	@Primary: Preference given to dependency when multiple dependencies are qualified to auto wire
+	@Qualifier: It is to a field or parameter, name should be given to autowire when multiple candidates matching
+	@Lazy: Indicates bean should initialize lazily
+	@Scope: To difine bean as prototype
+	@PostConstruct: Identifies method to execute after all dependencies injected
+	@PreDestroy: Identifies method to execute before spring removes it from container
+
+	@Named: CDI Annotation which is similar to Component
+	@Inject: CDI Annotation which is similar to Autowire
+
+Spring Big Picture- Framework and Modules:
+------------------------------------------
+
+	Spring Modules:
+
+		Spring Framwork Contains multiple modules
+
+		Fundamenta Features: Core (IOC Container, Dependency Injection etc..)
+		Web : Spring MVC
+		Web Reactive : Spring WebFlux
+		Data Access: Spring JDBC, JPA etc.
+		Integration: JMS etc.
+		Testing: Mock Objects, Spring MVC Test etc.
+
+		-> Why Spring divided into multiple modules, because every application can choose any module they want based
+			on requirement
+
+			They dont need to make use of everything in spring Framework
+
+
+	Spring Projects:
+
+		Application architectures evolving continiously
+			Web-> REST API-> Micoservices-> Cloud-> ...
+
+		Spring Evolving through Projects
+
+		First Project: Spring Framwork
+		Spring Security: To provide security to web apps or Rest APIs or Microservices
+		Spring Data: Integrates with different type of databases i.e NoSQL and Relational
+		Spring Integration: Address challenges with integration with other applications
+		Spring Boot: Papulor framework to build microservices
+		Spring Cloud: Build cloud native applications
+
+Why Spring Eco system so papulor ?
+
+	Loose Coupling: Spring manages creation and wiring of beans
+	Reduced Bilorplate Code: Focus more on bussiness logic
+	Architecture Flexibility: Spring Modules and Projects, we can pick whatever we need
+	Evolution with Time: Spring Boot, Spring Cloud etc.
+
+
+
+
+
+
+
+
+

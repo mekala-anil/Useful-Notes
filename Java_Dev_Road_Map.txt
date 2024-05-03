@@ -1,0 +1,79 @@
+Java Developer Road Map:
+------------------------
+
+-> Java Basics
+
+	*Go deep into every topic and Understand Concepts
+
+	Variables/DataTypes
+	Conditional Statements
+	Loops
+	Arrays and Strings
+	Exceptional Handling 
+	
+	OOPs and Collections:
+	
+	Four Pillars of OOps
+	Generics
+	Collection Framework
+	Comparable & Comparator
+	Lamda & Streams
+
+-> Problem Solving (DSA) 
+
+	Complete DSA (GFG self paced )
+
+-> Spring Boot
+
+	Dependency Injection and Management
+	Maven & Gradle
+	Hibernate
+	Build REST APIs
+	TDD (test driven development) and JUnit
+	Build Projects
+
+-> Additional Tools
+
+	Git and GitHub
+	Linux (Basic Commands)
+	AWS SQS, Lamda, Dynamo DB, EC2 etc.
+	IntelliJ (Recommanded over Eclipse)
+	Jenkins
+	Design Principles and SOA
+	Microservices, Docker and Kubernetes
+	
+	
+	
+	
+---------------------------------
+
+Notes:
+
+	Fudamentals - Java
+	Framework - Spring Boot, MVC Architecure, Routing, Rest APIs, CORS, Middleware
+	Discord Bot (Project) - Webhooks, Crypto Tracker Bot, Weather Bot
+	Database - MongoDB/Postgres- ORMs, Transaction, Indexing
+	Crud Application - Notes taking app/ Input Validation Libraries
+	Tools - Postman & GitHub
+	Authentication - Using JWT, Cookie, User Registration etc.
+	Web Sockets - Redis for pub-sub, socket.io
+	Logging & Monitering - Sentry, Grafana
+	Projects
+		Realtime Applications- Code share, Whatsapp, Multiplayer games like Tic tak toe, Battleship, scribble etc
+		Payement Gateways- E-Commerce Application, Saas Application
+	
+	AWS/Azure/GCP - EC2, S3, CloudFront, Lamda, Linux Commands, VPC, Subnets, Security Groups, IAM Roles, Load Balancers, Elastic Bean stack
+	DevOps - CI/CD, Jenkins, GitHub Actions
+	
+	
+	
+Further (To become best)
+
+	Design Principles
+	ElasticSearch
+	GraphQL
+	WebRTC
+	Docker & Kubernetes
+	
+	
+	and keep on learning ....
