@@ -119,6 +119,26 @@ Collections.swap(arr, i, j) : it will swap given index values from given contain
 
 
 
+1. Synchronized Classes: These are Thread safe, can't access multiple threads at a time
+
+	e.g. 
+		Vector
+		HashTable
+
+		these are legacy classes
+
+
+2. Non Synchronized Classes: These are not thread safe, multiple threads can access at a time
+
+	All Collections except legacy classes are non synchronized classes
+
+	- We can use "java.util.concurrent" classes for synchronized version of non synchronized classes
+
+
+
+
+
+
 
 
 

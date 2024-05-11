@@ -50,4 +50,14 @@ advantages of new API
 a. Thread safety
 b. Designed API and ease of understanding
 c. ZonedDate and time
+
+
+Thread-Safe:
+-----------
+
+Synchronization: It will prevent from multiple threads changing data simultaniously, it will one thread at a time to 
+	access a resource
+
+
+- Synchronization is achived using locks or other synchronization mechanisms
 	

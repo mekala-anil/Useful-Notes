@@ -151,7 +151,11 @@ Pull Request:
 Pull Command: used to fetch and download content from a remote repo and immediately update local repo
 				to match content
 
+				it will pull from remote repo and integrate with local repo if any changes made in remote repo
+
 	git pull origin main
+
+
 
 
 Merge Conflicts:
@@ -199,5 +203,8 @@ Fork:
 git remote remove origin : To disconnect local repo from romte repo
 
 git push -all : To push all at a time
+
+
+- In summary, cloning is used to create a local copy of a remote repository, while pulling is used to update your local repository with changes from the remote repository. Both operations are essential for collaborating with others and keeping your local repository synchronized with the latest changes.
 
 

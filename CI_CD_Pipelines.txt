@@ -1,0 +1,102 @@
+
+
+CI/CD Pipelines are aimed to Automate developers workflows
+
+Continious Integration(CI): 
+	
+	-Integrates Code changes from multiple developers into a shared repositary frequently
+
+	-CI Pipeline automatically build and test the code whenever changes are pushed to repositary, this 
+
+		ensures codebase remains in working state and helps integeration issues catch early
+
+Continuous Deployement(CD):
+
+	- CD automatically deploying code to production or ther environments after passing through CI Pipeline
+
+
+Both CI and CD Pipelines are essential for modern software development practices
+
+
+-Continous Delivery vs Continous Deployement:
+--------------------------------------------
+
+In Contious Delivery, Application is built, tested and ready to release, which requires human intervention to approve release to production (Button Click)
+
+In Continuous Deployement, Application is built, tested and will go to production automatically without any approval 
+
+Choosing one among both depends on amount of expertise and risk
+
+
+
+CI/CD Tools:
+------------
+
+There are many CI/CD tools available based on its unique features and streanths
+
+Some of them are
+
+	Jenkins
+	GitHub Actions
+	GitLab CI/CD
+	CircleCI
+	AzurePipelines
+	AWS CodePipelines
+	Bamboo
+	GoCD
+
+	etc.
+
+
+
+	Jenkins
+	---------
+
+Jenkins is Open Source automated server which is Used for CI/CD
+
+Jenkins is a CI/CD Tool
+
+Automates Build and Deployement Process
+
+
+Environments:
+-------------
+
+While application developing to go live, we will have multiple environments those are
+
+1. Dev Env
+	
+	where development happens
+
+2. QA Env
+	
+	Quality Assurance Testing
+	Testing Environment
+
+3. UAT Env
+
+	User Acceptance Testing
+
+4. Pilot Env(Pre Production)
+
+	Performance Testing
+
+5. Production Env
+
+	Application Live for Client Usage
+
+
+Above environment are optional and solely depends upon project and its use cases
+
+	
+	
+
+Tomcat Server:
+--------------
+
+Tomcat primilary used for deploying web applications which packed as WAR
+
+we have two ways to deploy
+
+1. Manully copy WAR file into 'webapps' directory
+2. Tomcat Manager web application (need to configure username and password)
