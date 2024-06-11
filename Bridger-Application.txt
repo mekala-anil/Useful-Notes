@@ -1,0 +1,41 @@
+
+1. we have DevHub Portal where applications will be onboarded
+
+	we will have 2 type of applications
+
+		a. Comcast apps
+		b. Vendor apps
+
+	we will be having app owners
+
+2. While onboarding, applications needs to go through some surveys, which will have some questions related to app
+
+3. These questions must be answered before onboarding
+
+	Some jobs will run everyday to know know any pending apps surveys or any app needs to update surveys
+
+4. If any apps past 7 days, it will trigger email notifications to application owners
+
+	(whole process is automated)
+
+5. We will be having a Bridger UI(Dashboard) having multiple components/functionalities like apps list, no. of notifications 
+	sent, due date etc.
+
+6. Backend services for UI were written in Spring Boot
+
+7. I will be handling Backend services of UI Dashboard
+
+Note: Jobs run everyday but email notifications will sent for every 7 days
+
+
+Tech Stack Used
+---------------
+
+Java 8
+Spring Boot 2.x
+Spring Security (JWT Tokens)
+Cloud Foundry (Cloud)
+Concourse Pipeline (CI/CD)
+MongoDB, MySQL
+
+UI: React JS
