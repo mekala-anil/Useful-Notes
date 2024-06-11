@@ -100,3 +100,30 @@ we have two ways to deploy
 
 1. Manully copy WAR file into 'webapps' directory
 2. Tomcat Manager web application (need to configure username and password)
+
+
+
+JENKINS(Udemy)
+---------------
+
+After Installation, if manually wanted to start, stop or restart jenkins
+
+Open CMD in Jenkins directory (C:\Program Files\Jenkins\)
+
+	1. To Start Jenkins Server : jenkins.exe start
+	2. To Stop Jenkins Server : jenkins.exe stop
+	3. To Restart : jenkins.exe restart
+
+We Can access Jenkins from 'http://localhost:8080'
+
+
+username: admin
+password: anil1234
+
+- We can also start jenkins by opening cmd in Jenkins Directory
+
+	CMD> java -jar jenkins.war
+
+	To change port
+	CMD> java -jar jenkins.war --httpPort=8081
+

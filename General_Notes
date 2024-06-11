@@ -1,16 +1,40 @@
+Switching is top Priority Now
 
+Craft Experince and Bridger Application
+Build CiCd Flow using Jenkins (To about CloudFoundry)
+On Board/Deploy Spring Boot App
+Executor Framework
+JIRA Basics
+Mime Message
+Linux Commands
+
+Revise and go through intervie prep.
+
+------------------------
+
+SonarQube for code analysis
+
+
+
+
+
+
+---------------
 Check list:
 ------------
 
 Java 8 revise
 Java Collections
 Build CI/CD Pipeline
-Swagger
+OpenAPI 3.0 
+
 Jenkins
 Kafka
 Microservices
 SQL Deep Dive
 Dockerfile (to build jar)
+
+Executor Framework
 
 Monitoring and Logging :
 	Log4J
@@ -19,4 +43,54 @@ Monitoring and Logging :
 Caching in Spring Boot
 
 
+------------------------
+
+Jenkins Using AWS (Rough)
+
+1. Set Security Inbound rules for EC2 Instance
+
+	Security group should allow 80,8080, 8081
+
+2. Select Ubantu OS
+
+3.Connect EC2 Instance Using Command (git bash)
+	ssh -i .........
+
+4. Install Java
+
+
+---------------------------------
+
+Delta Airlines
+
+S4
+6th Floor
+Z 14
+
+--------------------
+
+Free Web Hosting Providers for Backend
+
+Heroku Cloud (Now it is not free)
+Alternatives of Heroku
+
+railway.app
+render
+Fly.io
+
+Digital Ocean
+AWS Free Tier
+
+
+We can deploy frontend on github pages, firebase, netlify
+
+
+------------------------------------------------
+
+To Check battery life
+
+Open CMD in Administrator
+	powercfg /batteryreport /output "C:\battery-report.html
+
+	it will store a web page in c drive and open that
 

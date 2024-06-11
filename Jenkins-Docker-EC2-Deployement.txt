@@ -1,0 +1,162 @@
+
+
+Deployement of Spring Boot App into AWS EC2 Using Jenkins and Docker
+--------------------------------------------------------------------
+
+Deployed Spring Boot using Jenkins CI/CD Pipeline
+
+Tools required
+---------------
+1. EC2 Instance (Ubuntu)
+2. Java Intalled in EC2
+3. Jenkins Installed in EC2
+4. Docker Installed in EC2
+5. Maven Configured in Jenkins
+6. GitHub Repositary
+
+Dockerfile script in boot project
+---------------------------------
+FROM openjdk:17
+WORKDIR /app
+COPY target/jenkins-deploy-ec2.jar /app
+ENTRYPOINT ["java","-jar","<app-jar-name>.jar"]
+
+
+
+Follow the below steps:
+-----------------------
+
+	Jenkins Server Setup in EC2 Linux VM
+	------------------------------------
+
+	1. Create ubuntu VM using AWS EC2 (t2.medium, requires atleat 4GB RAM)
+	2. Enable port 8080 in security group inbound rules
+	3. Connect to VM using PUTTY (key pair as .pek downloaded while ec2 creation)
+	4. Install Java in EC2 through putty interface
+
+		sudo apt update
+		sudo apt install fontconfig openjdk-17-jre
+		java -version
+
+		-Run above all commands in ubuntu cli using putty to download java in EC2
+
+	5. Install Jenkins in EC2
+
+		sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  		https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+		echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  		https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  		/etc/apt/sources.list.d/jenkins.list > /dev/null
+		sudo apt-get update
+		sudo apt-get install jenkins
+
+		-Copy all at a time and paste it
+
+	6. Start Jenkins
+
+		sudo systemctl enable jenkins
+		sudo systemctl start jenkins
+
+	7. Verify Jenkins
+
+		sudo systemctl status jenkins
+
+	8. Access Jenkins server in browser using EC2 public Ip and port
+
+		http://public-ip:8080/
+
+	9. Copy Jenkins Admin pwd
+
+		sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+	10. Create Admin account and install all suggested plugins
+
+
+	Configure Maven as Global Tool in Jenkins
+	-----------------------------------------
+
+	Maven Jenkins-> Tools-> Maven Installation-> Add Maven
+
+	Setup Docker in EC2 Instance
+	----------------------------
+
+	curl -fsSL get.docker.com | /bin/bash
+	sudo usermod -aG docker jenkins
+	sudo usermod -aG docker ubuntu
+	sudo systemctl restart jenkins
+	sudo docker version
+
+	-Run all above cmds at a time to install docker
+
+	-After Docker Installation restrat jenkins server and if required reconnect EC2 again
+
+	Create Jenkins Job
+	------------------
+
+	stage 1: clone git
+	stage 2: Maven Build
+	stage 3: Create Docker Image
+	stage 4: Create Docker Container
+
+		Pipeline Script:
+		----------------
+
+			pipeline{
+				agent any
+				tools{
+					maven 'M3'
+				}
+				stages {
+        			stage('Git Clone') { 
+            			steps { 
+                			git 'url' 
+            			}
+        			}
+        			stage('Maven Build') { 
+            			steps { 
+                			sh 'mvn clean compile package' 
+            			}
+        			}
+        			stage('Docker Image') { 
+            			steps { 
+                			sh 'docker build -t <imgname> .' 
+            			}
+        			}
+        			stage('Deployement') { 
+            			steps { 
+                			sh 'docker run -d -p 9090:8080 --name app1_c imgname' 
+            			}
+        			}
+    			}
+			}
+
+
+		To Deploy container again for next build, we will get error bcz already same container running in specified port
+		thats why, need to stop existing container and remove it,
+		need to add below script from 2nd deployement
+
+					stage('Deployement') { 
+            			steps { 
+            				sh 'docker stop app1_c'
+            				sh 'docker rm app1_c'
+                			sh 'docker run -d -p 9090:8080 --name app1_c imgname' 
+            			}
+        			}
+
+
+
+     -> Enable host port in EC2 security group inbound rules
+     -> Trigger Jenkins Job
+     -> Access Application in Browser
+     		URL : http://public-ip:port/
+
+
+     -> After using delete resources in cloud
+
+
+
+
+
+
+
+

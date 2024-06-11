@@ -265,3 +265,39 @@ JUnit:
 
 
 	- These annotations helps to set any resourses before test or we can clean up after tests
+
+
+
+
+Caching
+--------
+
+Caching is a technique where frequently requested data stored in separate area for quick response, this area is called cache
+
+It can be either InMemory, Memory or Any Server etc.
+
+It Improves Application performance
+
+- Spring Boot provides Cache Support and Need to add its dependency in pom.xml
+
+If Spring Boot doesnt detect any cache then by default it will use ConcurrentHashMap
+
+
+@EnableCaching : It indicates boot app to inform that we need caching support, It applies in main class
+
+@Cacheable : It applies on method, then the result of method stored in cache
+
+			It applies on class as well, then it will apply cacheing to all its methods
+
+@CachePut : To update cache data with respect to original data
+@CaheEvict : To remove data from cache
+
+
+Cache Dependency
+----------------
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-cache</artifactId>
+    <version>3.1.5</version>
+</dependency>

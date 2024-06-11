@@ -1,0 +1,28 @@
+												OpenAPI 3.0
+												-----------
+
+OpenAPI 3.0 is newer version of swagger 2.0
+
+It generates API documentation for better readability
+
+To generate API documentation for Spring Boot Project, we need to add springdoc-openapi library
+
+- Add dependency in pom.xml
+
+	<dependency>
+	    <groupId>org.springdoc</groupId>
+	    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+	    <version>2.5.0</version>
+	</dependency>
+
+- It will generate default documentation
+
+we can access swagger ui from ' http://localhost:8080/swagger-ui.html'
+
+- Customize the path by setting the springdoc.api-docs.path property in your application.properties
+
+	e.g.
+		springdoc.api-docs.path=/api-docs
+
+
+Note: More Documentation available at 'https://springdoc.org/'
