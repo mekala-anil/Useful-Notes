@@ -7,6 +7,7 @@ Executor Framework
 JIRA Basics
 Mime Message
 Linux Commands
+Computer Networking 
 
 Revise and go through intervie prep.
 
@@ -94,3 +95,10 @@ Open CMD in Administrator
 
 	it will store a web page in c drive and open that
 
+
+BufferedReader:
+--------------
+
+BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+String name = reader.readLine();
+int age =Integer.parseInt(reader.readLine());

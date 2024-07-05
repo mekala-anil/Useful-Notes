@@ -1,0 +1,96 @@
+SOLID Principles of OOPs:
+------------------------
+
+	Solid Principles is set guidelines for writing high quality, maintainable, scalable software, that will help developers to create code that is easy to understand, modify and extend
+
+	Advantages of this Principle
+	----------------------------
+	Help us to write better code
+
+	- Avoid Duplicate Code
+	- Easy to maintain
+	- Easy to understand
+	- Flexible Software
+	- Reduce Complexity
+
+	S.O.L.I.D
+
+	Single Responsibility Principle(SRP):
+	-------------------------------------
+	A class should have only one reason to change, meaning that it should have only one reason to change
+	e.g.we should have only one method
+
+	Goal: Every Change is independent, it will not effect other classes or jobs
+
+	Open-Closed Principle(OCP):
+	---------------------------
+	Software Entities(classes, modules, functions) should be open for extension but closed for any modifications, in other words you can add new functionality without modifying existing code
+	Achevie this using Interfaces, Abstract classes, Inheritance
+
+	Goal: You can't distrub existing tested and live code
+
+	Liskov Substition Principle(LSP):
+	---------------------------------
+	Sub classes must be substitional for thier base type parent classes without effecting correctness of program
+
+	If class B is subtype of class A, then we should be able to class A with class B without breaking behavior of program and sub class should extend capability of parent class but it should not narrow down
+
+	Dependent(child) classes must be swapable
+
+	Goal: Every child of parent must obey all parent capabilitis and can have more
+
+	Interface Segrigation Principle(ISP):
+	-------------------------------------
+	Client should not be forced to implement unused methods in a interface, Split large interfaces into smaller and have more specific to avoid unnecessary dependencies
+
+	Goal: We should not have unused methods bcz of interface had
+
+	Dependency Inversion Principle(DIP):
+	------------------------------------
+	High Level modules should not depend on low level modules, i.e Class should depend on Interface rather than concreate class
+
+	Goal: Promotes loose coupling and flexibility
+
+
+Design Patterns:
+----------------
+
+	Design Patterns are reusable solutions to common problems in software development, they provide blueprint for specific challenges, they are well tried and tested
+
+	Design patterns are majorly categorized into 3 types based on their purpose
+
+	1. Creational Design Patterns : These will Deal with Classes and Object Creation
+
+		-Factory Method
+		-Abstract Factory
+		-Builder
+		-Prototye
+		-Singleton
+
+	2. Structural Design Patterns : Used for structoring more than one object or classes to form large structures
+
+		-Adapter(Class)
+		-Adapter(Object)
+		-Bridge
+		-Composite
+		-Decorator
+		-Facade
+		-FlyWeight
+		-Proxy
+
+	3. Behavioral Design Patterns : These Patterns focus on common objects communication or collabaration
+
+		-Interpreter
+		-Template Method
+		-Chain of Responsibility
+		-Command
+		-Iterator
+		-Mediator
+		-Memento
+		-Observer
+		-State
+		-Strategy
+
+
+
+
