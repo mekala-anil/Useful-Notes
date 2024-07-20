@@ -11,7 +11,9 @@ Types of Cloud Computing:
 - AWS as pay as as you go pricing model, which has majorly 3 categories
 
 1. Compute: Pay for compute time
+
 2. Storage: Pay for data stored
+
 3. Networking: Pay for OUT transferred data, Data transfer IN is free
 
 
@@ -192,3 +194,173 @@ Classic Ports to Know:
 443=HTTPS-access secured websites
 
 3389=RDP(Remote Desktop Protocal)-log into a windows instance
+
+
+EBS Volume:
+------------
+
+-An EBS(Elastic Block Store) volume is a network drive you can attach to your EC2 Instance while they run
+
+-It allows your instance to persist data even after their termination
+
+-They are bound to a specific availability zone
+
+-Anology: Think them as : 'network USB stick'
+
+- Its a network drive (i.e not physical), uses network to communicate thus we can see some latency
+
+-Have a provisioned capacity(size in GB and IOPS)
+
+-We can backup(snapshot) of EBS Volume any time then we can restore it later
+
+
+EC2 Instance Store:
+-------------------
+
+-EBS are good but because of network driven their perfamance bit slow
+
+-For High Performance Hardware Disk, Use EC2 Instance Store
+
+-Better I/O Performance
+
+-Risk of data loss if hardware fails
+
+-Good for buffer/cache/scrach data/temporary content
+
+-EC2 Instance store lose their storage if they stopped
+
+
+EFS-Elastic File System:
+-----------------------
+
+-Manged EFS(Network file system) can be mounted on 100s of EC2
+
+-EFS works with Linux EC2 Instances in multi-AZ
+
+-Highly available, scalable,expensive(3 x gp2), pay per use, no capacity planning
+
+- EFS-IA(EFS Infrequent Access)
+	
+	-Storage class that is cost optamized for files that are not used everyday
+
+	-Upto 92% lower cost compared to EFS
+
+	-EFS automatically moves files to EFS-IA based on last time they were used
+
+AMI Overview:
+-------------
+
+-AMI : Amazon Machine Image
+
+-AMI are a cutomization of EC2 Instance, we can build our own configurations
+
+-AMI arebuilt for specific region(also can copied to across regions)
+
+-You can launch EC2 Instances from
+
+	-A public AMI: AWS Provided
+
+	-Your own AMI: you can make your own and maintain yourself
+
+	-An AWS AMI Marketplace: An AMI someone else made
+
+-EC2 Image Builder: Automatcally build, test and distribute AMIs
+
+
+
+Elasting LoadBalancing & Auto Scaling Groups:
+----------------------------------------------
+
+Vertical Scalability:
+--------------------
+
+-Increasing the size or capacity of Instance
+
+-If Intance running in t2.micro, vertical scaling means upgrading to t2.large
+
+-Vertical scalability is common for non distributed systems ex. databses
+
+
+Horizantal Scalability:
+------------------------
+
+-Increasing number of instances
+
+-Horizantal scaling implies on distrubted systems
+
+-It is very common for modern web applications
+
+-It is easy to do horizantal scaling, Thanks to Amazon EC2	
+
+High Availability:
+-----------------
+
+-Running Instance at least 2 Availability Zones
+
+-Goal of High availability is to survive data loss(disaster)
+
+
+Scalability Vs Elasticity:
+-------------------------
+
+Scalability: It is ability to accomidate large load by making hardware stronger by scaling up or out
+
+Elasticity: Elasticity means there is a Auto Scaling Groups which can Scale system based on load if System is scalable
+
+
+Load Balancing:
+---------------
+
+-Load balancers are servers that forward internet traffic to multiple servers(EC2 Instances) downstream
+
+-Spread load across multiple downstream instances
+
+-Expose single point of access(DNS) to your application
+
+-Seamlessly handle failures of downstream instances
+
+-Do regular health checks to your indtances
+
+-Provide SSL termination(HTTPS) for your websites
+
+-High availability across Zones
+
+
+Why Elastic Load Balancer:
+--------------------------
+
+-An ELB(Elastic Load Balancer) is a managed load balancer
+
+-AWS takes care of upgrades,maintanence, high availability
+
+-4 kinds of load balancers offered by AWS
+
+	1. Application Load Balancer(HTTP/HTTPS only)- Layer 7
+
+	2. Network Load Balancer (ultra-high performance, allows for TCP) - Layer 4
+
+	3. Gateway Load Balancer - Layer 3
+
+	4. Classic Load Balancer (retired in 2023) - Layer 4&7
+
+
+Auto Scaling Group(ASG):
+------------------------
+
+-In real life, websites traffic can be changed quickly
+
+-Goal of Auto Scaling Group is
+
+	1. Scale out(add EC2 Instances) to match an increased load
+
+	2. scale in(remove EC2 Instances) to match decreased load
+
+	3. Ensure we have minimum and maximum number of machines running
+
+	4. Automatically register new instances to a load balancer
+
+	5. Replaces unhealthy instances
+
+-Cost Savings: Only run at an optimal capacity(principle of cloud) 
+
+-Need to integrate load balancers to ASG for sealess distribution of traffic
