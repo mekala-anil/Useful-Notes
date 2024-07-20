@@ -1,0 +1,126 @@
+
+Quarkus is for Backend Developers who is willing move their application to Cloud
+
+	"SuperSonic Subatomic Java"
+	VerySpeed LessMemory
+
+About Quarkus
+	
+	- Created in late 2018
+	- Open source
+	- Backed by Red Hat
+	- We can say it as 'Java Toolkit'
+	- Good for Microservices
+	- Functions (Faas) or Serverless
+	- Reactive Systems
+
+Extension Mechanism
+
+	- Quarkus has very small core
+	- Everything else is a extension in quarkus
+	- extensions supported by quarkus and community
+	- we can also create own extensions
+
+	Some Extensions are
+
+		Eclipse Vert.x, EclipseMicroprofile, Spring, Hibernate, RestEasy, ApacheCamel,
+		Kubernetes, Openshift, Jaeger, Promethus, Apache Kafka, Netty
+
+
+Performance Comparision with Sample End Point
+
+	- Traditional Java Framework	
+		REST
+		Time: 4.3 Sec
+		Memoey: 140 MB
+
+		REST+CRUD
+		Time: 9.5 Sec
+		Memoey: 218 MB
+
+	- Quarkus + HotSpot (JIT)
+		REST
+		Time: 0.75 Sec
+		Memory: 77 MB
+
+		REST+CRUD
+		Time: 2.5 Sec
+		Memory: 130 MB
+	- Quarkus + GraalVM (AOT)
+		REST
+		Time: 0.014 Sec
+		Memory: 19 MB
+
+		REST+CRUD
+		Time: 0.055 Sec
+		Memory: 35 MB
+
+
+Why Quarkus is Papulor : Quarkus Pushes Java to Cloud and much more
+
+Quarkus Development Environment Requires
+	- Java 8+
+	- GraalVM
+		Extension of JVM
+		Seperated Bundle
+		Creates native binaries
+	- IntelliJ Idea
+	- Maven
+	- Docker
+
+
+JAX-RS
+------
+
+In Quarkus mainly we will use JAX-RS
+
+JAX-RS is a Java API for RESTful Web services
+
+Some annotations are
+
+@GET
+@POST
+@Path : Identifies URI path(Used on class or method)
+@PathParam : Used to get variable in URI
+@Produces,@Consumes: Define Media type that a resource can consumes or accept
+
+
+In Quarkus we will below dependencies for REST
+	
+	quarkus-resteasy : For rest services
+	quarkus-resteasy-jsonb : For converting response in json
+
+
+CDI (Context and Dependency Injection):
+
+	Quarkus uses CDI for Dependency Injection
+
+	@Inject: Identifies and Injects Suitable beans
+	@Qualifier: Defines prefered bean to be injected
+	@ApplicationScoped: One Instance per Apllication
+
+	etc...
+
+	quarkus-arc : dependency required for CDI Implementation in Quarkus
+
+
+
+Quarkus Testing:
+---------------
+
+	We can write Unit Test cases for End Points
+
+	@QuarkusTest : Used to start test
+
+	If we start quarkus test it will listen on port 8081 by default
+
+	We will use two unit testing frameworks JUnit 5, RESTAssured
+
+	Quarkus supports JUnit 5, 4 support deprecated
+
+	RESTAssured also Java Library to test Rest APIs
+
+	RESTAssured uses given(), when(), then() for RESTAPIs testing
+
+
+	mvn test: Quarkus starts test and listen on 8081

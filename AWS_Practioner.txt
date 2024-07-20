@@ -1,0 +1,194 @@
+
+Types of Cloud Computing:
+
+	Infrastructure as a Service(IaaS): Complete Virtual Machine (A OS machine in cloud)
+
+	Platform as a Service(PaaS) : Directly Deploy without worrying about underlying software
+
+	Softaware as a Service(SaaS) : complete software runs and managed by AWS
+
+
+- AWS as pay as as you go pricing model, which has majorly 3 categories
+
+1. Compute: Pay for compute time
+2. Storage: Pay for data stored
+3. Networking: Pay for OUT transferred data, Data transfer IN is free
+
+
+IAM: Users & Groups
+--------------------
+
+IAM: Identity and Access Management
+
+-It is a Global Service
+
+-Root account created by default, it can't be used or shared
+
+-Users and Groups can be created
+
+-Groups only contain Users, not groups
+
+-User can be alone or User can belong to multiple groups
+
+
+IAM:Permissions:
+----------------
+
+-Users or Groups are assigned by JSON Documents which are Policies
+
+-Theses policies define users to use resources
+
+-In AWS we will give least privilages to users or groups, not more than needed
+
+
+
+To Access AWS:
+--------------
+
+To access AWS we have 3 options
+
+1. AWS Management Console : Protected by Password + MFA
+
+2. AWS Command Line Interface(CLI): Protected by access keys
+
+3. AWS Software Development Kits(SDK): for code:protected by access keys
+
+-Access Keys are generated throw AWS Console
+
+
+AWS CLI:
+---------
+
+A tool that enables you to interact with AWS Services using commands in your command line shell
+
+-Direct Access to Public APIs of AWS services
+
+-You can develop scripts to manage your resources
+
+-Alternative to use AWS Management Console
+
+
+AWS SDK
+-------
+
+AWSSoftware Development Kit(AWS SDK)
+
+-Language specific APIs(set of libraries)
+
+-Enables you to manage and access aws services programatically
+
+-Embedded within your application
+
+-Supports many programming languages
+
+-AWS CLI built on AWS SDK for Python
+
+
+IAM Roles for Services
+-----------------------
+
+-Some AWS Services will need to perform actions on your behalf
+
+-To do so, we will assign permissions to AWS services with IAM Roles
+
+-Common Roles
+
+	EC2 Instance Roles
+
+	Lamda Function Roles
+
+	Roles for CloudFormation
+
+
+
+IAM Security Tools:
+-------------------
+
+IAM Credentials Report(acoount-level)
+
+	-A Report that lists all your account users and status of their various credentials
+
+IAM Access Advisor(user-level)
+
+	-Shows service permissions granted to a user and when those services last accessed
+
+
+
+Amazon EC2(Elastic Cloud Compute)
+----------------------------------
+
+-EC2 is one of the most papulor AWS offering
+
+-It is Inftrastructure as a Service (IaaS)
+
+-Main Capabilities are
+
+	-Renting Virtual Machines(EC2)
+
+	-Storing data on Virtual Drives(EBS)
+
+	-Distributing load across machines(ELB)
+
+	-Scaling services using Auto Scaling Groups(ASG)
+
+-Knowing EC2 is fundamental to know how cloud works
+
+
+EC2 Configuration Options:
+--------------------------
+
+-Operating Systems(OS): Windows, Linux, Mac OS
+
+-How much compute power and cores(CPU)
+
+-How much random access memory(RAM)
+
+-How much storage space
+
+	-Network Attached(EBS & EFS)
+
+	-Hardware(EC2 Instance Store)
+
+-Network card: Speed of card, Public IP Address
+
+-Firewall Rules: Security Groups
+
+-Bootstrap script(At first launch): User Data
+
+-We have Several Instance types to choose based on requirements
+
+
+Security Groups:
+----------------
+
+-Security Groups are fundamentals of network security in AWS
+
+-They controll how traffic allowed INTO or OUT of EC2 Instances
+
+-Security Groups only contain Allow rules
+
+-Security group rules can reference by IP or by Security groups
+
+-They regulate access to ports
+
+-They regulate authorized IP ranges- IPv4 and IPv6
+
+-Security group can be attached to multiple instances and vice versa
+
+-By default, all inbound traffic blocked and outbound traffic autherized
+
+
+Classic Ports to Know:
+----------------------
+
+22=SSH(Secure Shell)-log in into linux instance
+
+21=FTP(File Transfer Protocal)-upload files into file share
+
+22=SFTP(Secure File transfer Protocal)-upload files using SSH
+
+80=HTTP-access unsecured websites
+
+443=HTTPS-access secured websites
+
+3389=RDP(Remote Desktop Protocal)-log into a windows instance

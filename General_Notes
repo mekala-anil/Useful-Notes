@@ -102,3 +102,7 @@ BufferedReader:
 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 String name = reader.readLine();
 int age =Integer.parseInt(reader.readLine());
+
+
+Design Patterns:
+----------------
