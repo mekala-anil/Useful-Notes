@@ -1,0 +1,26 @@
+
+Alt+1 : Opens project explorer and hides it
+
+Double shift: Can search anything in entire project, include settings
+
+Ctr+N: To search in only classes
+
+Ctr+Shift+N: Search only files 
+
+Ctrl+Shift+E: Shows last modified changes in files
+
+soutm: It prints classname.methodname
+
+varname.null + Entr: Adds null check if condition
+
+varname.notnull + Entr: Adds not null check if condition
+
+Ctr+Shift+V: Shows all copied items	
+
+Select+Wrapper: It will wrap text ex. " ", ( )
+
+anytext.var + Enter: It converts into variable
+
+
+Codeta(Plugin): We will get any code examples
+
