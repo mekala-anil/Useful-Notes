@@ -9,6 +9,49 @@ Committed to continuous improvement, I strive to sharpen my skills every day to 
 
 HTML, CSS, JavaScript, React JS, Java, Spring Framework, Spring Boot, Hibernate, SQL, MySQL, and Maven
 
+----------------------------
+Summary:
+
+A skilled Java Developer with 3 years of experience in developing robust and scalable applications using Java and Spring Boot, Proficient in implementing unit tests using JUnit and Mockito to ensure code quality and reliability, Experienced in CI/CD and code quality monitoring with GitLab and SonarQube and cloud services on AWS
+
+Technical Skills
+Programming Languages: Java
+Frameworks: Spring Boot, Spring MVC, Spring Data, Spring Security
+Testing Tools: JUnit, Mockito
+Code Quality & CI/CD: SonarQube, GitLab CI/CD
+Databases: Cassandra DB, MySQL, PostgreSQL
+Cloud Platforms: AWS (EC2, S3, RDS, Lambda)
+Version Control: Git, GitLab
+Build Tools: Maven, Gradle
+Other Tools: Docker, Kubernetes, Jenkins
+
+Experince:
+TCS
+1. Developed and maintained high-performance microservices using Java and Spring Boot
+2. Implemented RESTful APIs ensuring seamless data flow 
+3. Enhanced code quality by writing unit tests using JUnit and Mockito, achieving over 90% code coverage
+4. Participated in code reviews, providing feedback and suggestions to improve code quality and adhere to best practices
+
+Virtusa
+1. Developed and Maintained an Automated Loan Processing System
+2. Analyzed Functional Specifications and Created Detailed Programming Specifications
+3. Designed and Implemented Unit Tests Aligned with Requirements
 
 
 
+CANVA:
+------
+Summary:
+A skilled Java Developer with 3 years of experience in developing robust and scalable applications using Java and Spring Boot, Proficient in implementing unit tests using JUnit and Mockito to ensure code quality and reliability, Experienced in CI/CD and code quality monitoring with GitLab and SonarQube and cloud services on AWS
+
+Experince
+
+TCS
+Developed and maintained high-performance microservices using Java and Spring Boot.
+Implemented RESTful APIs ensuring seamless data flow.
+Enhanced code quality by writing unit tests using JUnit and Mockito, achieving over 90% code coverage.
+
+Virtusa
+Developed and Maintained an Automated Loan Processing System.
+Analyzed Functional Specifications and Created Detailed Programming Specifications.
+Designed and Implemented Unit Tests Aligned with Requirements.
