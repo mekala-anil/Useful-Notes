@@ -1,0 +1,75 @@
+
+While unit testing, we may require database data but it is not necessarly original db thats why we will
+mock it with dummy data
+
+Mocking is used wehn you want to test component with isolation from its dependencies
+
+
+Mocking Process:
+----------------
+
+1. Create TestClass for anyService you want to test
+
+2. Declare which service class you want test in created testclass
+	
+	Annotate that declared service with @InjectMocks
+
+2. Declarefor which compinents you need mock data and annotate that with @Mock
+
+3.inSetUp method @BeforeEach
+	
+	MockitoAnnotations.openMocks(this);
+
+	it will opne mocks
+
+
+-@Autowired will look for original Dependency and it will take much time
+
+
+-@SpringBootTest: ignored if we dont want to play with actual spring context
+
+@InjectMocks: Mocks will be injected to this dependency like autowired, it will look for mocked dependencies and will inject into it
+@Mock: This component will be mocked with dummy data and we will provide in setup method
+
+Thus we are not using spring context, we need to mock data using setup method beforeeach test
+@BeforeEach
+void setUps(){
+	//Mockito.Annotations.initMocks(this);
+	MockitoAnnotations.openMocks(this);
+}
+
+
+Some annotations:
+
+@InjectMocks: Inject all mocks to this reference
+@Mock: It will Mock that dependency, But we need to provide some dummy data
+
+
+SonarQuebe:
+-----------
+
+SonarQube Responsible for 2 tasks
+
+1. Code Coverage: It will show percentage that means that much code percentage is tested
+2. Code Quality Check:
+	
+	a. Bugs: Not written properly
+	b. Vulnerability: Section of code which open to attacks
+	c. Code Smell: Poorly written and creates confusion
+
+
+-We will integrate sonarQube with Jenkins Pipeline
+We need to install 2 plugins in Jenkins
+1. SonarQube Scanner
+2. JDK/ Eclips Temurin Installer Plugin
+
+After that configure in Global Tool Configuration in Jenkins
+
+
+In Project:
+We need to add 3 things in pom.xml
+1. Jacoco Propertise :<propertise>
+2. jacoco maven dependency :<dependency>
+3. jacoco Plugin :<plugin>
+
+Jacoco will integrate with maven then generates code coverage

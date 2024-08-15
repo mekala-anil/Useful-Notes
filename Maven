@@ -1,0 +1,73 @@
+Maven is a Automation Build Tool used primarly for Java Projects
+
+Main aspects of Maven is two
+
+1. Dependency Management
+
+2. Project Build life cycle management
+
+Maven is based on Project Object Model (pom.xml)
+
+
+Maven Life Cycle:
+
+Its a sequence of phases which executes one by one
+
+compile --> test --> package --> install --> deploy
+
+Maven has 3 life cycles
+
+1. site: creates website with information about our project
+	
+	mvn site
+
+	-Inside targest/site index.html
+
+2. clean: removes /target folder from project
+
+3. default: main life cycle consists of more than 20 phases
+
+- We can write multiple commands in single line
+
+Maven Goals:
+-------------
+
+1. Compile Goals
+
+	mvn compile: Compiles source code of Project (located in src/main/java)
+
+	mvn test-compile: Compiles test source code (src/test/java)
+
+2. Test Goals
+
+	mvn test: Executes unit tests using compiled files, it requires mvn compile or mvn test-compile
+
+	mvn integration-test: Executes Integration tests
+
+3. Packing Goals
+
+	mvn package: Packages compiled code into distributable format jar/war/ear
+
+	mvn install: Install the package into local maven repositary, makes artifact available for other 
+
+	projects
+
+4. Clean Goals
+
+	mvn clean: Deletes files created by previous build
+
+5. Deploy Goals
+
+	mvn deploy: Deploys artifact to a remote repositary e.g. maven central or internal nexus repositary
+
+6. Validate Goals
+
+	mvn validate: Validates project configuration, Ensures project is correct and all information 
+
+	available before proceeding with build
+
+7. Site Goals
+
+	mvn site: Creates project website with various reports
+
+
