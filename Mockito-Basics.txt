@@ -45,6 +45,13 @@ Some annotations:
 @Mock: It will Mock that dependency, But we need to provide some dummy data
 
 
+MockMvc:
+----------
+
+MockMvc is used to perform testing of Spring MVC controllers by simulating HTTP requests. It allows you to test the controller’s behavior without actually starting a web server
+
+
+
 SonarQuebe:
 -----------
 
