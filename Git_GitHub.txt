@@ -207,4 +207,15 @@ git push -all : To push all at a time
 
 - In summary, cloning is used to create a local copy of a remote repository, while pulling is used to update your local repository with changes from the remote repository. Both operations are essential for collaborating with others and keeping your local repository synchronized with the latest changes.
 
+________________________________
+To update local copy with remote
+
+git checkout my-feature-branch   # Step 1: Switch to the feature branch
+git fetch origin                 # Step 2: Fetch latest changes
+git merge origin/main            # Step 3: Merge updates from the remote main branch
+# OR
+git rebase origin/main           # Step 3: (Alternative) Rebase with the remote main branch
+git push origin my-feature-branch # Step 5: Push changes back to remote
+
+
 
