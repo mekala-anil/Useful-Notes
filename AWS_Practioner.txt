@@ -364,3 +364,105 @@ Auto Scaling Group(ASG):
 -Cost Savings: Only run at an optimal capacity(principle of cloud) 
 
 -Need to integrate load balancers to ASG for sealess distribution of traffic
+
+
+Amazon S3:
+--------
+
+S3 (Simple Storage Service) is a Cloud storage service provided by AWs
+
+-It allows to store and retrive any amount of data from anywhere on web
+
+-S3 service allows you to create buckets in which you can store anything
+
+-We dont have any restrics data amount can store in s3 bucket
+
+We have 5 major Advantages
+
+-Availability and Durability
+
+-Scalability
+
+-Security
+
+-Cost Effective
+
+-Performance
+
+- We have various S3 Storage classes which will have unique characteristics
+
+- S3 will maintain versioning of objects as well
+
+- We can also host static websites in S3 Buckets
+
+
+AWS CloudWatch:
+---------------
+
+-AWS CloudWatch is a comprehensive monitoring service for across AWS Resources and Applications that run on AWS
+
+-It enables real time montoring of Applications on AWS
+
+Key Features of CloudWatch:
+
+
+AWS Lamda:
+-----------
+
+Serverless Architecture: Serverless Architecture is a cloud computing model which will be executed based on Events,
+
+Infrastructure managed dynamically
+
+AWS Lamda: AWS Lamda is key service of AWS which provides Serverless Architecture, AWS Lamdas will execute based on
+
+predefined events like HTTP Requests via API Gateway, file uploads in S3, CloudWatch alerts etc.
+
+Key Specifications of Lamda:
+---------------------------
+
+-Auto Scaling: Dynamically Auto Scales based on traffic
+
+-Event-Driven: It responds to various AWS services like S3, DynamoDB, SNS etc.
+
+-Execution Time Limit: Lamda functions will run for maximum of 15 minutes per execution
+
+-Cost Efficiency: You only pay for execution time and no of invocations
+
+-Cold Start: Lamda has cold start issue where it takes soeme time to initialize when it is idle for long time
+
+Sample Use Cases of AWS Lamda:
+------------------------------
+
+-REST API Backend: Combine AWS API Gateway with Lamdas to create Scalable REST APIs
+
+-Cron Jobs and Task Sheduling: Shedule and execute tasks for predefined intervals without maintaning servers
+
+-Microservices: Break down your monolithic application into smaller independent lamda functions
+
+-Simplified CI/CD: Integrating with tools like GitLab making continious deployemet process makes easy
+
+-Challenges:
+
+	-Cold Start: Since Java Application or Spring Applications tends to initialize slowly cold start latency can be issue in Lamdas
+
+	-Memory Limit: Although Lamda supports upto 10GB of memory, Spring Boot Applications consume more memory, we need to monitor and optimize accordingly
+
+
+AWS API Gateway:
+---------------
+-It serves as the entry point for APIs that interact with AWS services like Lambda, EC2, and RDS, or other backend systems
+
+-API Gateway helps to expose backend applications such as microservices to the external world in a secure and scalable way.
+
+Key Features of API Gateway:
+----------------------------
+-RestFull and WebSocket APIs: It creates both RESTfull and Web Socket APIs for two way communication
+
+-Scalability: API Gateway automatically scales to handle hundreds of thousands of concurrent API calls.
+
+-Caching: API Gateway provides the ability to cache responses, reducing the load on the backend and improving performance.
+
+-Custom Domain Names: You can map a custom domain name to your API Gateway to give users a consistent URL.
+
+-Support for Multiple Backends: API Gateway can integrate with multiple types of backends including AWS Lambda, HTTP endpoints, Amazon EC2, and more
+

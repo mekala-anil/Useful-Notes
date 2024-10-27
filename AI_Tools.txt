@@ -1,0 +1,23 @@
+
+1. Descript: Software tool that will convert from text to voice
+	Need to install
+
+2. D-ID: Will create any videos based on our image
+
+3. Voice.ai: We can change our voice
+
+4. Video BG Remover: We can change any video background without recording blue screen
+
+5. Adope Podcast: Removes background noice from Audio
+
+6. ChatGPT: Get Response to all your queries
+
+7. cleanup.pictures: Removes unwanted objects from pictures
+
+8. Runway: Remove unwanted objects from video
+
+9. Midjourney: Converts your text into AI art
+
+10. Pictory.ai: Will convert text into high quality videos
+
+11. Future Tools: Will have collection of all AI Tools

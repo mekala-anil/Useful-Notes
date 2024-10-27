@@ -55,3 +55,27 @@ Virtusa
 Developed and Maintained an Automated Loan Processing System.
 Analyzed Functional Specifications and Created Detailed Programming Specifications.
 Designed and Implemented Unit Tests Aligned with Requirements.
+
+
+Cold Email:
+---------------
+
+Subject: Experienced Java Developer - Open for New Opportunities
+
+Dear [Recruiter's Name],
+
+I hope this message finds you well. My name is Mekala Anil, and I am a passionate Java Developer with 3 years of experience in designing, developing, and maintaining robust applications using Java, Spring Boot, and AWS. I have also worked extensively with JUnit, Mockito, GitLab, Docker, Jenkins, SonarQube
+
+I am Currently working in TCS as a Java Developer
+
+I am actively seeking new opportunities where I can leverage my skills to contribute to dynamic teams and impactful projects. I came across your profile and believe your company could benefit from my technical expertise.
+
+Please find my resume attached for your review. I would love to discuss how I can bring value to your team. Looking forward to the possibility of working together.
+
+Thank you for your time and consideration.
+
+Best regards,
+Mekala Anil
++91 9100320924
+amekala17@gmail.com
+https://www.linkedin.com/in/anilm17/
