@@ -1,0 +1,30 @@
+package com.anil.ProductsDemo.model;
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+
+import java.util.List;
+public class MockRandom {
+    public static void main(String args[]){
+        EasyRandomParameters parameters = new EasyRandomParameters()
+                .collectionSizeRange(1, 5) // Set the size range for collections (Lists)
+                .stringLengthRange(5, 20)   // Set the string length range
+                .randomizationDepth(3);     // Depth of nested objects to generate
+
+        // Create an EasyRandom instance
+        EasyRandom easyRandom = new EasyRandom(parameters);
+
+        // Generate a random Order
+        Order randomOrder = easyRandom.nextObject(Order.class);
+
+        // Print the generated Order
+        System.out.println(randomOrder);
+    }
+}
+
+// Add Dependency in pom.xml
+<dependency>
+			<groupId>org.jeasy</groupId>
+			<artifactId>easy-random-core</artifactId>
+			<version>5.0.0</version>
+			<scope>test</scope>
+		</dependency>
