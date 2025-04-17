@@ -1,6 +1,6 @@
 Lamda Expression:
 ----------------
-The Expression through which we can represent anonymous function
+The Expression through which we can represent anonymous function/ shorthand way to express abstract functions
 
 Functional Interface:
 ---------------------
